@@ -49,17 +49,17 @@ export default function AdminPage() {
     setSaving(false)
   }
 
-  async function deleteProduct(id) {
+  async function deleteProduct(id: string) {
     await supabase.from('products').delete().eq('id', id)
     loadData()
   }
 
-  async function updateOrderStatus(id, status) {
+  async function updateOrderStatus(id: string, status: string) {
     await supabase.from('orders').update({ order_status: status }).eq('id', id)
     loadData()
   }
 
-  const statusColor = {
+  const statusColor: any = {
     placed: 'bg-yellow-100 text-yellow-700',
     confirmed: 'bg-blue-100 text-blue-700',
     out_for_delivery: 'bg-orange-100 text-orange-700',

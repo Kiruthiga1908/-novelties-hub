@@ -4,8 +4,8 @@ import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 
 export default function Home() {
-  const [products, setProducts] = useState([])
-  const [filtered, setFiltered] = useState([])
+  const [products, setProducts] = useState<any[]>([])
+  const [filtered, setFiltered] = useState<any[]>([])
   const [activeCategory, setActiveCategory] = useState('all')
   const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(true)

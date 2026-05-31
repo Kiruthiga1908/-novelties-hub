@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { Suspense } from 'react'
 
 function OrdersContent() {
-  const [orders, setOrders] = useState([])
+  const [orders, setOrders] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const searchParams = useSearchParams()
   const success = searchParams.get('success')
