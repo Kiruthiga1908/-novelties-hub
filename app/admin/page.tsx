@@ -15,6 +15,8 @@ export default function AdminPage() {
   const [msg, setMsg] = useState('')
   const [uploading, setUploading] = useState(false)
   const [editProduct, setEditProduct] = useState<any>(null)
+  const [authenticated, setAuthenticated] = useState(false)
+  const [password, setPassword] = useState('')
 
   useEffect(() => { loadData() }, [])
 
@@ -111,9 +113,35 @@ export default function AdminPage() {
     delivered: 'bg-green-100 text-green-700'
   }
 
+  if (!authenticated) return (
+    <div className="min-h-screen flex items-center justify-center bg-orange-50">
+      <div className="bg-white rounded-2xl p-8 border shadow-sm w-80 text-center">
+        <p className="text-3xl mb-4">🔐</p>
+        <h2 className="font-bold text-lg mb-4">Admin Login</h2>
+        <input type="password" value={password}
+          onChange={e => setPassword(e.target.value)}
+          onKeyDown={e => { if (e.key === 'Enter' && password === 'mamitha123') setAuthenticated(true) }}
+          placeholder="Enter password"
+          className="w-full border rounded-xl px-4 py-3 text-sm mb-4 focus:outline-none focus:border-orange-400"/>
+        <button onClick={() => {
+          if (password === 'mamitha123') setAuthenticated(true)
+          else alert('Wrong password!')
+        }} className="w-full bg-orange-500 text-white py-3 rounded-full font-bold">
+          Login
+        </button>
+      </div>
+    </div>
+  )
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-2">Admin Panel</h1>
+      <div className="flex justify-between items-center mb-2">
+        <h1 className="text-2xl font-bold">Admin Panel</h1>
+        <button onClick={() => setAuthenticated(false)}
+          className="text-sm text-gray-500 border px-3 py-1 rounded-full hover:bg-gray-50">
+          Logout
+        </button>
+      </div>
       <p className="text-sm text-gray-500 mb-6">NoveltiesHub - Vadavalli</p>
 
       <div className="grid grid-cols-3 gap-4 mb-8">
@@ -186,7 +214,7 @@ export default function AdminPage() {
                 Product Photo {uploading && '(Uploading...)'}
               </label>
               <input type="file" accept="image/*" onChange={handleImageUpload}
-                className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-orange-400"/>
+                className="w-full border rounded-lg px-3 py-2 text-sm"/>
               {form.images && (
                 <img src={form.images} alt="preview" className="mt-2 h-20 w-20 object-cover rounded-lg"/>
               )}
@@ -210,7 +238,6 @@ export default function AdminPage() {
           {editProduct && (
             <div className="bg-white rounded-2xl p-6 border mb-4">
               <h2 className="font-bold text-lg mb-4">Edit Product</h2>
-              {msg && <p className="text-sm mb-4 text-orange-600 font-semibold">{msg}</p>}
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs font-semibold text-gray-600 mb-1 block">Name</label>
