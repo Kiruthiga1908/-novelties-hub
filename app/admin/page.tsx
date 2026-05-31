@@ -124,7 +124,7 @@ export default function AdminPage() {
           placeholder="Enter password"
           className="w-full border rounded-xl px-4 py-3 text-sm mb-4 focus:outline-none focus:border-orange-400"/>
         <button onClick={() => {
-          if (password === 'mamitha123') setAuthenticated(true)
+          if (password === 'Mamitha@6384') setAuthenticated(true)
           else alert('Wrong password!')
         }} className="w-full bg-orange-500 text-white py-3 rounded-full font-bold">
           Login
