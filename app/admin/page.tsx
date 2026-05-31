@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 
 export default function AdminPage() {
-  const [products, setProducts] = useState([])
-  const [orders, setOrders] = useState([])
+  const [products, setProducts] = useState<any[]>([])
+  const [orders, setOrders] = useState<any[]>([])
   const [tab, setTab] = useState('products')
   const [loading, setLoading] = useState(true)
   const [form, setForm] = useState({
