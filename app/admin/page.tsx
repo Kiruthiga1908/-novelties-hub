@@ -120,7 +120,7 @@ export default function AdminPage() {
         <h2 className="font-bold text-lg mb-4">Admin Login</h2>
         <input type="password" value={password}
           onChange={e => setPassword(e.target.value)}
-          onKeyDown={e => { if (e.key === 'Enter' && password === 'mamitha123') setAuthenticated(true) }}
+          onKeyDown={e => { if (e.key === 'Enter' && password === 'Mamitha@6384') setAuthenticated(true) }}
           placeholder="Enter password"
           className="w-full border rounded-xl px-4 py-3 text-sm mb-4 focus:outline-none focus:border-orange-400"/>
         <button onClick={() => {
